@@ -1,11 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Button, Switch, TextInput, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Button,
+  Switch,
+  TextInput,
+  Image,
+  ImageBackground,
+} from 'react-native';
+import RegistrationScreen from './Screens/RegistrationScreen';
+import BgImage from './images/registration-BG.jpg';
 //import BigButton from './'
 
 export default function App() {
   return (
     <>
-      <Text style={myStyles.titleWithStyles}>This is "Text" component before "View" component</Text>
+      <StatusBar style="auto" />
+      <RegistrationScreen />
+
+      {/* <Text style={myStyles.titleWithStyles}>This is "Text" component before "View" component</Text>
       <View style={myStyles.container}>
         <Text style={myStyles.title}>This "Text" is inside "View" component</Text>
         <Button title="This is button" />
@@ -15,12 +30,14 @@ export default function App() {
         <TextInput placeholder="Enter something" />
         <Switch title="CheckBox" />
         <Image source={require('./avka_more_light.jpg')} style={{ width: 150, height: 150 }} />
-      </ScrollView>
+      </ScrollView> */}
+
+      {/* <View style={myStyles.container}>
+         <Text>Hello World! This is my first project in Android Sutdio!</Text>
+         <StatusBar style="auto" />
+        
+      </View> */}
     </>
-    //    <View style={styles.container}>
-    //      <Text>Hello World! This is my first project in Android Sutdio!</Text>
-    //      <StatusBar style="auto" />
-    //    </View>
   );
 }
 
@@ -46,4 +63,5 @@ const myStyles = StyleSheet.create({
     backgroundColor: '#61dafb',
     color: '#20232a',
   },
+  bgImg: { flex: 1 },
 });
