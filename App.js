@@ -11,6 +11,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import RegistrationScreen from './Screens/RegistrationScreen';
+import LogInScreen from './Screens/LoginScreen';
 import BgImage from './images/registration-BG.jpg';
 //import BigButton from './'
 
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
+      {/* <LogInScreen /> */}
       <RegistrationScreen />
 
       {/* <Text style={myStyles.titleWithStyles}>This is "Text" component before "View" component</Text>

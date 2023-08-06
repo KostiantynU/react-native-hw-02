@@ -1,16 +1,15 @@
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  TextInput,
-  Button,
-  Pressable,
-} from 'react-native';
+import { StyleSheet, View, ImageBackground, Text, TextInput, TouchableOpacity } from 'react-native';
 import BgImage from '../images/registration-BG.jpg';
+import { useState } from 'react';
 
 const RegistrationScreen = () => {
-  const onPressShowPass = () => {};
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [securePass, setSecurePass] = useState(true);
+  const onPressShowPass = () => {
+    setSecurePass(!securePass);
+  };
 
   return (
     <View style={regStyles.container}>
@@ -22,14 +21,47 @@ const RegistrationScreen = () => {
             </View>
           </View>
           <Text style={regStyles.mainTitle}>Реєстрація</Text>
-          <TextInput style={regStyles.inputsAll} placeholder="Логін" />
-          <TextInput style={regStyles.inputsAll} placeholder="Адреса електронної пошти" />
+          <TextInput
+            id="username"
+            style={regStyles.inputsAll}
+            onChangeText={setLogin}
+            value={login}
+            autoComplete="username"
+            placeholder="Логін"
+          />
+          <TextInput
+            id="email"
+            style={regStyles.inputsAll}
+            onChangeText={setEmail}
+            value={email}
+            autoComplete="email"
+            placeholder="Адреса електронної пошти"
+          />
           <View style={{ position: 'relative' }}>
-            <TextInput style={regStyles.inputsAll} placeholder="Пароль" />
-            <Pressable style={{ position: 'absolute', top: 0, right: 0 }} onPressIn={() => {}}>
+            <TextInput
+              id="passInput"
+              style={{ ...regStyles.inputsAll, marginBottom: 43 }}
+              onChangeText={setPassword}
+              value={password}
+              autoComplete="current-password"
+              secureTextEntry={securePass}
+              placeholder="Пароль"
+            />
+            <TouchableOpacity
+              style={{ position: 'absolute', top: 0, right: 0 }}
+              onPressIn={onPressShowPass}
+            >
               <Text style={regStyles.inputText}>Показати</Text>
-            </Pressable>
+            </TouchableOpacity>
           </View>
+          <TouchableOpacity style={regStyles.regButton} accessibilityLabel="Register">
+            <Text style={regStyles.regButtonText}>Зареєструватися</Text>
+          </TouchableOpacity>
+          <TouchableOpacity accessibilityLabel="LogIn">
+            <Text style={{ color: '#1B4371', textAlign: 'center' }}>
+              Вже є аккаунт? <Text style={{ textDecorationLine: 'underline' }}>Увійти</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </View>
@@ -92,7 +124,17 @@ const regStyles = StyleSheet.create({
     borderColor: '#e8e8e8',
     backgroundColor: '#f6f6f6',
   },
-  inputText: { position: 'absolute', right: 16, top: 15 },
+  inputText: { position: 'absolute', right: 16, top: 15, color: '#1B4371' },
+  regButton: {
+    width: '100%',
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    marginBottom: 16,
+    borderRadius: 100,
+    backgroundColor: '#FF6C00',
+  },
+
+  regButtonText: { color: '#ffffff', textAlign: 'center' },
 });
 
 export default RegistrationScreen;
